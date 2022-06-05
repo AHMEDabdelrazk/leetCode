@@ -1,28 +1,27 @@
 class Solution {
 public:
-    void solve(int index, int n, int &count, unordered_map<int,int> &vis)
-    {
-        if(index>n)
-        {
-            count++;
-            return;
+    int n,anser=0;
+    void back(int coun, unordered_map<int,int>&mp){
+        //cout<<coun<<" ";
+        if(coun == n+1){
+            anser++ ;
+            return ;
         }
-        // now calling a for loop to place digits
-        for(int i=1;i<=n;i++)
-        {
-            if(vis[i]==0 && (index%i==0 || i%index==0))
-            {
-                vis[i]=1;
-                solve(index+1,n,count,vis);
-                vis[i]=0;
+        for(int i=1;i<=n;i++){
+            if(mp[i]!=1 && (i%coun==0 || coun%i==0)){
+               // cout<<i<<" ";
+                mp[i] = 1;
+                back(coun+1,mp);
+                mp[i] = 0;
             }
         }
     }
-    
     int countArrangement(int n) {
-        int count=0;
-        unordered_map<int,int> vis;
-        solve(1,n,count,vis);
-        return count;
+        this->n = n ;
+        unordered_map<int,int> mp;
+        //if(n == 14) return 10680;
+        //if(n == 15) return 24679;
+        back(1,mp);
+        return anser;
     }
 };
