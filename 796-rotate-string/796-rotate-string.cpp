@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        int len=s.size();
+        if(s.size()!=goal.size()) return false;
+        while(len){
+            if(s==goal) return true;
+            s=s+s[0];
+            s.erase(s.begin(),s.begin()+1);
+            len--;
+        }
+        return false;
+    }
+};
