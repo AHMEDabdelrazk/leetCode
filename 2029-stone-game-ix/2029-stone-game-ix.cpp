@@ -11,11 +11,12 @@ public:
 
         // If the number of 0-mod-3 stones is even,
         // Alice needs at least one 1 and one 2.
-        //// examble:
-        // alice choose the 1 
+        //////////// examble:
+        // alice choose the 1 or 2 
         // so bob will forced to choose from from 0
         // then alice choose from 0 and the last 0 will be to alice
-        // then bob will choose 2 and lose 
+        // then bob will choose 2 and lose but what if bob choose 1 ????
+        // => NOTE: when it's come to only 1s and 2s whoever start wins
         if (std::get<0>(mods) % 2 == 0) {
             return std::get<1>(mods) > 0 && std::get<2>(mods) > 0;
         }
