@@ -16,8 +16,7 @@ public:
         }
         int answer = 0;
         for (int j = 0; j < 26; j++) {
-            answer += dp[s.length()][j];
-            answer = answer % MOD;
+            answer = (answer+dp[s.length()][j])%MOD;
         }
         return answer;
     }
