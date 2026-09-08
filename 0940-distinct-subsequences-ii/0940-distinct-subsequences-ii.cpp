@@ -9,10 +9,9 @@ public:
             int c = s[i - 1] - 'a';
             int total = 0;
             for (int j = 0; j < 26; j++) {
-                total += dp[i - 1][j];
-                total = total%MOD;
+                total = (total + dp[i - 1][j])%MOD;
           }
-            dp[i][c] = total%MOD + 1;
+            dp[i][c] = total + 1;
         }
         int answer = 0;
         for (int j = 0; j < 26; j++) {
